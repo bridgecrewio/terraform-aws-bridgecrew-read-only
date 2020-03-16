@@ -1,0 +1,42 @@
+data template_file "message" {
+  template = file("${path.module}/message.json")
+  vars = {
+    request_type         = "Create"
+    bridgecrew_sns_topic = local.bridgecrew_sns_topic
+    customer_name        = var.company_name
+    account_id           = data.aws_caller_identity.caller.account_id
+    external_id          = random_string.external_id.result
+    role_arn             = aws_iam_role.bridgecrew_account_role.arn
+    region               = data.aws_region.region.id
+  }
+}
+
+resource null_resource "create_bridgecrew" {
+  provisioner "local-exec" {
+    command     = "aws sns ${local.profile_str} --region ${data.aws_region.region.id} publish --target-arn \"${local.bridgecrew_sns_topic}\" --message '${jsonencode(data.template_file.message.rendered)}' && sleep 30"
+    working_dir = path.module
+  }
+
+  depends_on = [null_resource.await_for_role_setup]
+}
+
+resource null_resource "update_bridgecrew" {
+  triggers = {
+    build = timestamp()
+  }
+
+  provisioner "local-exec" {
+    command     = "aws sns ${local.profile_str} --region ${data.aws_region.region.id} publish --target-arn \"${local.bridgecrew_sns_topic}\" --message '${jsonencode(replace(data.template_file.message.rendered, "Create", "Update"))}'"
+    working_dir = path.module
+  }
+
+  depends_on = [null_resource.create_bridgecrew]
+}
+
+resource null_resource "disconnect_bridgecrew" {
+  provisioner "local-exec" {
+    command = "aws sns ${local.profile_str} --region ${data.aws_region.region.id} publish --target-arn \"${local.bridgecrew_sns_topic}\" --message '${jsonencode(replace(data.template_file.message.rendered, "Create", "Delete"))}'"
+    when    = destroy
+    working_dir = path.module
+  }
+}
