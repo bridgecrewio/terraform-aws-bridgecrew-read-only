@@ -14,8 +14,8 @@ This stack creates a role with a dedicated External ID which allows only authori
 | Name | Required? | Type | Default Value | Example Value | Description |
 |---|---|---|---|---|---|
 | company_name| YES | String | | testcustomer | The name of the customer. Must be alphanumeric. |
+| aws_profile | YES | String |  | prod | The name of the profile to be used. If using default AWS credentials, set this to null |
 | account_alias | NO | String |  | prod | The alias of the account the CF is deployed in. This will be prepended to all the resources in the stack. Default is {company_name}-bc |
-| aws_profile | NO | String | null | prod | The name of the profile to be used. If using default AWS credentials, leave the default value as is |
 
 ## Outuput
 | Name |  Example Value | Description |
