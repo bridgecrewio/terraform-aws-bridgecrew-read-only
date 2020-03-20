@@ -22,7 +22,7 @@ resource null_resource "create_bridgecrew" {
 
 resource null_resource "update_bridgecrew" {
   triggers = {
-    build = timestamp()
+    build = md5(data.template_file.message.rendered)
   }
 
   provisioner "local-exec" {
