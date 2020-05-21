@@ -5,7 +5,7 @@ output "role_arn" {
 
 output "customer_name" {
   description = "The customer name as defined on Bridgecrew signup"
-  value       = var.company_name
+  value       = var.org_name
 }
 
 output "template_version" {

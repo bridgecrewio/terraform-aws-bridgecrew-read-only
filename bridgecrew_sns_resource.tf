@@ -3,7 +3,7 @@ data template_file "message" {
   vars = {
     request_type         = "Create"
     bridgecrew_sns_topic = local.bridgecrew_sns_topic
-    customer_name        = var.company_name
+    customer_name        = var.org_name
     account_id           = data.aws_caller_identity.caller.account_id
     external_id          = random_string.external_id.result
     role_arn             = aws_iam_role.bridgecrew_account_role.arn

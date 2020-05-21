@@ -1,10 +1,10 @@
-variable "company_name" {
+variable "org_name" {
   description = "The name of the company the integration is for. Must be alphanumeric."
   type        = string
 }
 
 variable "account_alias" {
-  description = "The alias of the account the CF is deployed in. This will be prepended to all the resources in the stack. Default is {company_name}-bc"
+  description = "The alias of the account the CF is deployed in. This will be prepended to all the resources in the stack. Default is {org_name}-bc"
   type        = string
   default     = ""
 }

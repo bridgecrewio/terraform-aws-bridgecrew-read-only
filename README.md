@@ -1,4 +1,4 @@
-# Terraform Bridgecrew ReadOnly Integration
+# Bridgecrew AWS ReadOnly Integration
 [![Maintained by Bridgecrew.io](https://img.shields.io/badge/maintained%20by-bridgecrew.io-blueviolet)](https://bridgecrew.io)
 [![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/bridgecrewio/terraform-aws-bridgecrew-read-only.svg?label=latest)](https://github.com/bridgecrewio/terraform-aws-bridgecrew-read-only/releases/latest)
 ![Terraform Version](https://img.shields.io/badge/tf-%3E%3D0.12.0-blue.svg)
@@ -13,9 +13,9 @@ This stack creates a role with a dedicated External ID which allows only authori
 ## Variables:
 | Name | Required? | Type | Default Value | Example Value | Description |
 |---|---|---|---|---|---|
-| company_name| YES | String | | testcustomer | The name of the customer. Must be alphanumeric. |
+| org_name| YES | String | | testcustomer | The name of the customer. Must be alphanumeric. |
 | aws_profile | YES | String |  | prod | The name of the profile to be used. If using default AWS credentials, set this to null |
-| account_alias | NO | String |  | prod | The alias of the account the CF is deployed in. This will be prepended to all the resources in the stack. Default is {company_name}-bc |
+| account_alias | NO | String |  | prod | The alias of the account the CF is deployed in. This will be prepended to all the resources in the stack. Default is {org_name}-bc |
 
 ## Outuput
 | Name |  Example Value | Description |
