@@ -5,7 +5,7 @@ data template_file "message" {
     bridgecrew_sns_topic = local.bridgecrew_sns_topic
     customer_name        = var.org_name
     account_id           = data.aws_caller_identity.caller.account_id
-    external_id          = random_string.external_id.result
+    external_id          = random_uuid.external_id.result
     role_arn             = aws_iam_role.bridgecrew_account_role.arn
     region               = data.aws_region.region.id
   }
