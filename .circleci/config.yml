@@ -29,6 +29,11 @@ jobs:
           command: |
             terraform fmt -check=true
             exit $( echo $? )
+      - run:
+          name: Check validity
+          command: |
+            terraform validate
+            exit $( echo $? )
 
 workflows:
   version: 2
