@@ -34,9 +34,16 @@ resource null_resource "update_bridgecrew" {
 }
 
 resource null_resource "disconnect_bridgecrew" {
+  triggers = {
+    profile   = local.profile_str
+    region    = data.aws_region.region.id
+    message   = jsonencode(replace(data.template_file.message.rendered, "Create", "Delete"))
+    sns_topic = local.bridgecrew_sns_topic
+  }
+
   provisioner "local-exec" {
-    command = "aws sns ${local.profile_str} --region ${data.aws_region.region.id} publish --target-arn \"${local.bridgecrew_sns_topic}\" --message '${jsonencode(replace(data.template_file.message.rendered, "Create", "Delete"))}'"
-    when    = destroy
+    command     = "aws sns ${self.triggers.profile} --region ${self.triggers.region} publish --target-arn \"${self.triggers.sns_topic}\" --message '${self.triggers.message}'"
+    when        = destroy
     working_dir = path.module
   }
 
