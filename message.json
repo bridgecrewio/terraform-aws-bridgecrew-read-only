@@ -9,7 +9,7 @@
     "ActionType": "AWSConfigActivation",
     "AWSAccountId": "${account_id}",
     "ExternalId": "${external_id}",
-    "TemplateVersion": "1.4",
+    "TemplateVersion": "1.5",
     "Type": "AWS_CT_CFG",
     "CrossAccountRoleArn": "${role_arn}",
     "CustomerName": "${customer_name}",
