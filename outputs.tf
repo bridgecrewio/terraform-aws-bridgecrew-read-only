@@ -10,5 +10,5 @@ output "customer_name" {
 
 output "template_version" {
   description = "Bridgecrew.io template version."
-  value       = "1.0"
+  value       = "1.5"
 }
