@@ -42,7 +42,7 @@ data aws_iam_policy_document "bridgecrew_describe_policy_document" {
 }
 
 resource aws_iam_role_policy "bridgecrew_describe_policy" {
-  policy = data.aws_iam_policy_document.bridgecrew_describe_policy_document
+  policy = data.aws_iam_policy_document.bridgecrew_describe_policy_document.json
   name   = "BridgecrewDescribePolicy"
   role   = aws_iam_role.bridgecrew_account_role.id
 }
