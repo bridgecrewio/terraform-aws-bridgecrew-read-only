@@ -72,6 +72,7 @@ No requirements.
 | account\_alias | The alias of the account the CF is deployed in. This will be prepended to all the resources in the stack. Default is {org\_name}-bc | `string` | `""` | no |
 | api\_token | This is your Bridgecrew platform Api token Set as and Environment variable TF\_VAR\_api\_token | `string` | n/a | yes |
 | aws\_profile | The profile that was used to deploy this module. If the default profile / default credentials are used, seet this value to null. | `string` | n/a | yes |
+| common\_tags | Implements the common tags scheme | `map(any)` | <pre>{<br>  "integration": "bridgecrew-aws-readonly",<br>  "module": "terraform-aws-bridgecrew-read-only"<br>}</pre> | no |
 | org\_name | The name of the company the integration is for. Must be alphanumeric. | `string` | n/a | yes |
 | template\_version | Version of this platform template | `string` | `"1.0"` | no |
 

@@ -24,3 +24,12 @@ variable "template_version" {
   default     = "1.0"
   description = "Version of this platform template"
 }
+
+variable "common_tags" {
+  type        = map(any)
+  description = "Implements the common tags scheme"
+  default = {
+    "module"      = "terraform-aws-bridgecrew-read-only"
+    "integration" = "bridgecrew-aws-readonly"
+  }
+}

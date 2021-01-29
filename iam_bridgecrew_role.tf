@@ -1,6 +1,7 @@
 resource "aws_iam_role" "bridgecrew_account_role" {
   name               = "${local.resource_name_prefix}-bridgecrewcwssarole"
   assume_role_policy = data.aws_iam_policy_document.bridgecrew_account_assume_role.json
+  tags               = var.common_tags
 }
 
 data "aws_iam_policy_document" "bridgecrew_account_assume_role" {
