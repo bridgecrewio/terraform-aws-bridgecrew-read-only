@@ -79,8 +79,10 @@ No requirements.
 
 | Name | Description |
 |------|-------------|
+| customer\_name | The customer name as defined on Bridgecrew signup |
 | message | n/a |
 | role | The cross-account access role for Bridgecrew |
+| role\_arn | The cross-account access role ARN for Bridgecrew |
 | template\_version | Bridgecrew.io template version. |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

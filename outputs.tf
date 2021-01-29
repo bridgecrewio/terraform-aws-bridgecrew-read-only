@@ -6,7 +6,7 @@ output "role_arn" {
 output "customer_name" {
   description = "The customer name as defined on Bridgecrew signup"
   value       = var.org_name
-}  
+}
 
 output "role" {
   description = "The cross-account access role for Bridgecrew"
