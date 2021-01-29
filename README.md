@@ -97,13 +97,13 @@ Check out these related projects.
 
 **Got a question?**
 
-File a GitHub [issue](https://github.com/bridgecrewio/terraform-aws-bridgecrew-remediation/issues).
+File a GitHub [issue](https://github.com/bridgecrewio/terraform-aws-bridgecrew-read-only/issues).
 
 ## Contributing
 
 ### Bug Reports & Feature Requests
 
-Please use the [issue tracker](https://github.com/bridgecrewio/terraform-aws-bridgecrew-remediation/issues) to report any bugs or file feature requests.
+Please use the [issue tracker](https://github.com/bridgecrewio/terraform-aws-bridgecrew-read-only/issues) to report any bugs or file feature requests.
 
 ## Copyrights
 
@@ -134,8 +134,8 @@ under the License.
 [github]: https://github.com/bridgecrewio
 [linkedin]: https://www.linkedin.com/in/bridgecrew/
 [twitter]: https://twitter.com/bridgecrew
-[share_twitter]: https://twitter.com/intent/tweet/?text=terraform-aws-bridgecrew-remediation&url=https://github.com/bridgecrewio/terraform-aws-bridgecrew-remediation
-[share_linkedin]: https://www.linkedin.com/shareArticle?mini=true&title=terraform-aws-bridgecrew-remediation&url=https://github.com/bridgecrewio/terraform-aws-bridgecrew-remediation
-[share_reddit]: https://reddit.com/submit/?url=https://github.com/bridgecrewio/terraform-aws-bridgecrew-remediation
-[share_facebook]: https://facebook.com/sharer/sharer.php?u=https://github.com/bridgecrewio/terraform-aws-bridgecrew-remediation
-[share_email]: mailto:?subject=terraform-aws-bridgecrew-remediation&body=https://github.com/bridgecrewio/terraform-aws-bridgecrew-remediation
+[share_twitter]: https://twitter.com/intent/tweet/?text=terraform-aws-bridgecrew-read-only/&url=https://github.com/bridgecrewio/terraform-aws-bridgecrew-read-only/
+[share_linkedin]: https://www.linkedin.com/shareArticle?mini=true&title=terraform-aws-bridgecrew-read-only/&url=https://github.com/bridgecrewio/terraform-aws-bridgecrew-read-only/
+[share_reddit]: https://reddit.com/submit/?url=https://github.com/bridgecrewio/terraform-aws-bridgecrew-read-only/
+[share_facebook]: https://facebook.com/sharer/sharer.php?u=https://github.com/bridgecrewio/terraform-aws-bridgecrew-read-only/
+[share_email]: mailto:?subject=terraform-aws-bridgecrew-read-only/&body=https://github.com/bridgecrewio/terraform-aws-bridgecrew-read-only/
