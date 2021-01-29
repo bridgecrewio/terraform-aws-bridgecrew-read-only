@@ -1,3 +1,6 @@
 .idea
 .terraform
 test
+.terraform.lock.hcl
+*.tfstate
+*.backup

@@ -5,8 +5,8 @@ locals {
   profile_str           = var.aws_profile != null ? "--profile ${var.aws_profile}" : ""
 }
 
-data aws_caller_identity "caller" {}
+data "aws_caller_identity" "caller" {}
 
-data aws_region "region" {}
+data "aws_region" "region" {}
 
-resource random_uuid "external_id" {}
+resource "random_uuid" "external_id" {}
