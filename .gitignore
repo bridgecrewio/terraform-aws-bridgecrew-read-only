@@ -4,3 +4,4 @@ test
 .terraform.lock.hcl
 *.tfstate
 *.backup
+.DS_Store

@@ -33,3 +33,15 @@ variable "common_tags" {
     "integration" = "bridgecrew-aws-readonly"
   }
 }
+
+
+variable "topic_name" {
+  type    = string
+  default = "handle-customer-actions"
+}
+
+
+variable "bridgecrew_account_id" {
+  type    = string
+  default = "890234264427"
+}

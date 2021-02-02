@@ -8,6 +8,12 @@ output "customer_name" {
   value       = var.org_name
 }
 
+output "topic" {
+  description = "The SNS endpoint that enabled the account"
+  value       = local.bridgecrew_sns_topic
+}
+
+
 output "role" {
   description = "The cross-account access role for Bridgecrew"
   value       = aws_iam_role.bridgecrew_account_role

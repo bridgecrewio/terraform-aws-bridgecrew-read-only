@@ -21,3 +21,8 @@ output "template_version" {
 output "message" {
   value = module.readonly.message
 }
+
+output "topic" {
+  description = "The SNS endpoint that enabled the account"
+  value       = module.readonly.topic
+}

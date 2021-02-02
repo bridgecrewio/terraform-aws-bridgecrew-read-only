@@ -1,5 +1,5 @@
 resource "aws_iam_role" "bridgecrew_account_role" {
-  name               = "${local.resource_name_prefix}-bridgecrewcwssarole"
+  name               = local.role_name
   assume_role_policy = data.aws_iam_policy_document.bridgecrew_account_assume_role.json
   tags               = var.common_tags
 }
@@ -14,7 +14,7 @@ data "aws_iam_policy_document" "bridgecrew_account_assume_role" {
 
     principals {
       type        = "AWS"
-      identifiers = ["arn:aws:iam::${local.bridgecrew_account_id}:root"]
+      identifiers = ["arn:aws:iam::${var.bridgecrew_account_id}:root"]
     }
 
     condition {
