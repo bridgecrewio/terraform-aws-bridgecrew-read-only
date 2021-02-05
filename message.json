@@ -11,7 +11,7 @@
     "ExternalId": "${external_id}",
     "IntegrationName": "Terraform",
     "ServiceToken": "${bridgecrew_sns_topic}",
-    "TemplateVersion": "${template_version}",
+    "TemplateVersion": "1.5",
     "Type": "AWS_CT_CFG",
     "Version": "1.O"
   },

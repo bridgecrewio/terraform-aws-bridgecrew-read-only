@@ -19,12 +19,6 @@ variable "api_token" {
   description = "This is your Bridgecrew platform Api token Set as and Environment variable TF_VAR_api_token"
 }
 
-variable "template_version" {
-  type        = string
-  default     = "1.5"
-  description = "Version of this platform template"
-}
-
 variable "common_tags" {
   type        = map(any)
   description = "Implements the common tags scheme"

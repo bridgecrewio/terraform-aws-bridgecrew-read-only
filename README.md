@@ -75,7 +75,6 @@ No requirements.
 | bridgecrew\_account\_id | n/a | `string` | `"890234264427"` | no |
 | common\_tags | Implements the common tags scheme | `map(any)` | <pre>{<br>  "integration": "bridgecrew-aws-readonly",<br>  "module": "terraform-aws-bridgecrew-read-only"<br>}</pre> | no |
 | org\_name | The name of the company the integration is for. Must be alphanumeric. | `string` | n/a | yes |
-| template\_version | Version of this platform template | `string` | `"1.5"` | no |
 | topic\_name | n/a | `string` | `"handle-customer-actions"` | no |
 
 ## Outputs
@@ -86,7 +85,6 @@ No requirements.
 | message | n/a |
 | role | The cross-account access role for Bridgecrew |
 | role\_arn | The cross-account access role ARN for Bridgecrew |
-| template\_version | Bridgecrew.io template version. |
 | topic | The SNS endpoint that enabled the account |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

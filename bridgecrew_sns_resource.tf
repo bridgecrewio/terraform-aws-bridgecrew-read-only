@@ -8,7 +8,6 @@ data "template_file" "message" {
     external_id          = random_uuid.external_id.result
     role_arn             = aws_iam_role.bridgecrew_account_role.arn
     region               = data.aws_region.region.id
-    template_version     = var.template_version
     api_token            = var.api_token
   }
 }
