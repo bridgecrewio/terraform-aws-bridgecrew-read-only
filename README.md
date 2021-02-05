@@ -21,10 +21,14 @@ Include **module.readonly.tf** in your existing Terraform code, and/or see *exam
 ```terraform
 module "readonly" {
   source      = "bridgecrewio/bridgecrew-read-only/aws"
-  api-token   = var.api_token
   version     = "v1.5.4"
+  org_name    = "<your org name>"
+  aws_profile = "<aws profile>"
+  api-token   = var.api_token
 }
 ```
+
+The module requires that you set your Bridgecrew organisation name and the name of the AWS profile of the AWS account you want to attach Bridgecrew too.
 
 The module expect the Bridgecrew platform API token to be supplied.
 
