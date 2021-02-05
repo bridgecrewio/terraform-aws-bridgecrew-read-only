@@ -21,7 +21,7 @@ variable "api_token" {
 
 variable "template_version" {
   type        = string
-  default     = "1.0"
+  default     = "1.5"
   description = "Version of this platform template"
 }
 

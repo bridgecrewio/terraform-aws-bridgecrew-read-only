@@ -75,7 +75,7 @@ No requirements.
 | bridgecrew\_account\_id | n/a | `string` | `"890234264427"` | no |
 | common\_tags | Implements the common tags scheme | `map(any)` | <pre>{<br>  "integration": "bridgecrew-aws-readonly",<br>  "module": "terraform-aws-bridgecrew-read-only"<br>}</pre> | no |
 | org\_name | The name of the company the integration is for. Must be alphanumeric. | `string` | n/a | yes |
-| template\_version | Version of this platform template | `string` | `"1.0"` | no |
+| template\_version | Version of this platform template | `string` | `"1.5"` | no |
 | topic\_name | n/a | `string` | `"handle-customer-actions"` | no |
 
 ## Outputs

@@ -5,3 +5,4 @@ test
 *.tfstate
 *.backup
 .DS_Store
+messages/
