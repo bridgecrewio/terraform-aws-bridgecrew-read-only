@@ -30,12 +30,14 @@ variable "common_tags" {
 
 
 variable "topic_name" {
-  type    = string
-  default = "handle-customer-actions"
+  type        = string
+  default     = "handle-customer-actions"
+  description = "The name of the SNS topic for Bridgecrew to receive notifications. This value should not typically be modified, but is provided here to support testing and troubleshooting, if needed."
 }
 
 
 variable "bridgecrew_account_id" {
-  type    = string
-  default = "890234264427"
+  type        = string
+  default     = "890234264427"
+  description = "The Bridgecrew AWS account ID from which scans will originate. This value should not typically be modified, but is provided here to support testing and troubleshooting, if needed."
 }
