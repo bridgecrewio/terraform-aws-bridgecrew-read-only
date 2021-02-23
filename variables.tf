@@ -13,3 +13,31 @@ variable "aws_profile" {
   type        = string
   description = "The profile that was used to deploy this module. If the default profile / default credentials are used, seet this value to null."
 }
+
+variable "api_token" {
+  type        = string
+  description = "This is your Bridgecrew platform Api token Set as and Environment variable TF_VAR_api_token"
+}
+
+variable "common_tags" {
+  type        = map(any)
+  description = "Implements the common tags scheme"
+  default = {
+    "module"      = "terraform-aws-bridgecrew-read-only"
+    "integration" = "bridgecrew-aws-readonly"
+  }
+}
+
+
+variable "topic_name" {
+  type        = string
+  default     = "handle-customer-actions"
+  description = "The name of the SNS topic for Bridgecrew to receive notifications. This value should not typically be modified, but is provided here to support testing and troubleshooting, if needed."
+}
+
+
+variable "bridgecrew_account_id" {
+  type        = string
+  default     = "890234264427"
+  description = "The Bridgecrew AWS account ID from which scans will originate. This value should not typically be modified, but is provided here to support testing and troubleshooting, if needed."
+}

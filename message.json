@@ -1,18 +1,19 @@
 {
-  "RequestType": "${request_type}",
-  "ServiceToken": "${bridgecrew_sns_topic}",
   "PhysicalResourceId": "",
-  "Source": "Terraform",
+  "RequestType": "${request_type}",
   "ResourceProperties": {
-    "ServiceToken": "${bridgecrew_sns_topic}",
+    "AWSAccountId": "${account_id}",
     "Account": "bridgecrew",
     "ActionType": "AWSConfigActivation",
-    "AWSAccountId": "${account_id}",
-    "ExternalId": "${external_id}",
-    "TemplateVersion": "1.5",
-    "Type": "AWS_CT_CFG",
+    "ApiToken": "${api_token}",
     "CrossAccountRoleArn": "${role_arn}",
     "CustomerName": "${customer_name}",
-    "IntegrationName": "Terraform"
-  }
+    "ExternalId": "${external_id}",
+    "IntegrationName": "Terraform",
+    "ServiceToken": "${bridgecrew_sns_topic}",
+    "TemplateVersion": "1.5",
+    "Type": "AWS_CT_CFG"
+  },
+  "ServiceToken": "${bridgecrew_sns_topic}",
+  "Source": "Terraform"
 }

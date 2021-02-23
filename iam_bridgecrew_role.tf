@@ -1,9 +1,10 @@
-resource aws_iam_role "bridgecrew_account_role" {
-  name               = "${local.resource_name_prefix}-bridgecrewcwssarole"
+resource "aws_iam_role" "bridgecrew_account_role" {
+  name               = local.role_name
   assume_role_policy = data.aws_iam_policy_document.bridgecrew_account_assume_role.json
+  tags               = var.common_tags
 }
 
-data aws_iam_policy_document "bridgecrew_account_assume_role" {
+data "aws_iam_policy_document" "bridgecrew_account_assume_role" {
   statement {
     actions = [
       "sts:AssumeRole",
@@ -13,7 +14,7 @@ data aws_iam_policy_document "bridgecrew_account_assume_role" {
 
     principals {
       type        = "AWS"
-      identifiers = ["arn:aws:iam::${local.bridgecrew_account_id}:root"]
+      identifiers = ["arn:aws:iam::${var.bridgecrew_account_id}:root"]
     }
 
     condition {
@@ -24,7 +25,7 @@ data aws_iam_policy_document "bridgecrew_account_assume_role" {
   }
 }
 
-data aws_iam_policy_document "bridgecrew_describe_policy_document" {
+data "aws_iam_policy_document" "bridgecrew_describe_policy_document" {
   statement {
     sid       = "AllowDescribingResources"
     effect    = "Allow"
@@ -41,18 +42,18 @@ data aws_iam_policy_document "bridgecrew_describe_policy_document" {
   }
 }
 
-resource aws_iam_role_policy "bridgecrew_describe_policy" {
+resource "aws_iam_role_policy" "bridgecrew_describe_policy" {
   policy = data.aws_iam_policy_document.bridgecrew_describe_policy_document.json
   name   = "BridgecrewDescribePolicy"
   role   = aws_iam_role.bridgecrew_account_role.id
 }
 
-resource aws_iam_role_policy_attachment "bridgecrew_security_audit" {
+resource "aws_iam_role_policy_attachment" "bridgecrew_security_audit" {
   role       = aws_iam_role.bridgecrew_account_role.name
   policy_arn = "arn:aws:iam::aws:policy/SecurityAudit"
 }
 
-resource aws_iam_role_policy_attachment "bridgecrew_cloud_formation" {
+resource "aws_iam_role_policy_attachment" "bridgecrew_cloud_formation" {
   role       = aws_iam_role.bridgecrew_account_role.name
   policy_arn = "arn:aws:iam::aws:policy/AWSCloudFormationReadOnlyAccess"
 }
