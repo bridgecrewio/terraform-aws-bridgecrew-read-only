@@ -4,7 +4,6 @@
 [![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/bridgecrewio/terraform-aws-bridgecrew-read-only.svg?label=latest)](https://github.com/bridgecrewio/terraform-aws-bridgecrew-read-only/releases/latest)
 ![Terraform Version](https://img.shields.io/badge/tf-%3E%3D0.12.0-blue.svg)
 [![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/bridgecrewio/terraform-aws-bridgecrew-read-only/cis_aws)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=bridgecrewio%2Fterraform-aws-bridgecrew-read-only&benchmark=CIS+AWS+V1.2)
-[![CircleCI](https://circleci.com/gh/bridgecrewio/terraform-aws-bridgecrew-read-only.svg?style=svg)](https://circleci.com/gh/bridgecrewio/terraform-aws-bridgecrew-cloudtrail)
 
 ## Installation Options
 
