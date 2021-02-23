@@ -12,8 +12,7 @@
     "IntegrationName": "Terraform",
     "ServiceToken": "${bridgecrew_sns_topic}",
     "TemplateVersion": "1.5",
-    "Type": "AWS_CT_CFG",
-    "Version": "1.O"
+    "Type": "AWS_CT_CFG"
   },
   "ServiceToken": "${bridgecrew_sns_topic}",
   "Source": "Terraform"
