@@ -7,7 +7,7 @@
 
 ## Installation Options
 
-This is a terraform module that creates an Amazon Web Services (AWS) Read Only integration with Bridgecrew.
+This is a Terraform module that creates an Amazon Web Services (AWS) Read Only integration with Bridgecrew.
 
 ### Starting fresh
 
@@ -45,6 +45,31 @@ export TF_VAR_api_token="your-platform-token"
 
 Or you can leave it blank to be prompted at your console.
 
+### Where do I get my Bridgecrew API token
+
+![get my API token](https://files.readme.io/ae875bb-bc_api_key.gif)
+
+## SSM example
+
+In the examples folder you'll also find an example that drives this module but obtains the api_token
+ from your AWS SSM parameter store. You'll have to add the variable there once yourself, but any future uses will obtain it without intervention.
+
+```cli
+aws ssm put-parameter --name /bridgecrew/api_token --value <your_token> --type SecureString
+```
+
+## Secrets manager example
+
+Also in the examples folder you'll find an example that drives this module but obtains the api_token,
+but this time from AWS secretsmanager.
+
+```cli
+aws secretsmanager create-secret --name /bridgecrew/api_token
+aws secretsmanager put-secret-value --secret-id /bridgecrew/api_token --secret-string <your_token>
+```
+
+## Where
+
 This module is supported for deployment in the following AWS regions:
 
 - All US regions
@@ -68,6 +93,24 @@ No requirements.
 | random | n/a |
 | template | n/a |
 
+## Modules
+
+No Modules.
+
+## Resources
+
+| Name |
+|------|
+| [aws_caller_identity](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) |
+| [aws_iam_policy_document](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) |
+| [aws_iam_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) |
+| [aws_iam_role_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy) |
+| [aws_iam_role_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) |
+| [aws_region](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/region) |
+| [null_resource](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) |
+| [random_uuid](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/uuid) |
+| [template_file](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) |
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |
@@ -75,10 +118,10 @@ No requirements.
 | account\_alias | The alias of the account the CF is deployed in. This will be prepended to all the resources in the stack. Default is {org\_name}-bc | `string` | `""` | no |
 | api\_token | This is your Bridgecrew platform Api token Set as and Environment variable TF\_VAR\_api\_token | `string` | n/a | yes |
 | aws\_profile | The profile that was used to deploy this module. If the default profile / default credentials are used, seet this value to null. | `string` | n/a | yes |
-| bridgecrew\_account\_id | n/a | `string` | `"890234264427"` | no |
+| bridgecrew\_account\_id | The Bridgecrew AWS account ID from which scans will originate. This value should not typically be modified, but is provided here to support testing and troubleshooting, if needed. | `string` | `"890234264427"` | no |
 | common\_tags | Implements the common tags scheme | `map(any)` | <pre>{<br>  "integration": "bridgecrew-aws-readonly",<br>  "module": "terraform-aws-bridgecrew-read-only"<br>}</pre> | no |
 | org\_name | The name of the company the integration is for. Must be alphanumeric. | `string` | n/a | yes |
-| topic\_name | n/a | `string` | `"handle-customer-actions"` | no |
+| topic\_name | The name of the SNS topic for Bridgecrew to receive notifications. This value should not typically be modified, but is provided here to support testing and troubleshooting, if needed. | `string` | `"handle-customer-actions"` | no |
 
 ## Outputs
 
@@ -89,7 +132,6 @@ No requirements.
 | role | The cross-account access role for Bridgecrew |
 | role\_arn | The cross-account access role ARN for Bridgecrew |
 | topic | The SNS endpoint that enabled the account |
-
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Related Projects
 
@@ -135,4 +177,3 @@ software distributed under the License is distributed on an
 KIND, either express or implied. See the License for the
 specific language governing permissions and limitations
 under the License.
-
