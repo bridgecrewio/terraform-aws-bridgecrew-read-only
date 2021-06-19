@@ -13,11 +13,11 @@ output "topic" {
   value       = local.bridgecrew_sns_topic
 }
 
-
 output "role" {
   description = "The cross-account access role for Bridgecrew"
   value       = aws_iam_role.bridgecrew_account_role
 }
+
 output "message" {
-  value = data.template_file.message.rendered
+  value = templatefile("${path.module}/message.json.tpl", { request_type = local.request_type, bridgecrew_sns_topic = local.bridgecrew_sns_topic, customer_name = local.customer_name, account_id = local.account_id, external_id = local.external_id, role_arn = local.role_arn, region = local.region, api_token = local.api_token })
 }
