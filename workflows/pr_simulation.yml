@@ -4,7 +4,7 @@ name: pull_request_simulation
 on:
   push:
     branches:
-      - master
+      - simulation
 env:
   terraform: 0.14.5
   tf_target_dir: example/examplea
