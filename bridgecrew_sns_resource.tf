@@ -7,11 +7,23 @@ locals {
   role_arn             = aws_iam_role.bridgecrew_account_role.arn
   region               = data.aws_region.region.id
   api_token            = var.api_token
+
+  message_template     = templatefile("${path.module}/message.json.tpl",
+    {
+      request_type = local.request_type,
+      bridgecrew_sns_topic = local.bridgecrew_sns_topic,
+      customer_name = local.customer_name,
+      account_id = local.account_id,
+      external_id = local.external_id,
+      role_arn = local.role_arn,
+      region = local.region,
+      api_token = local.api_token,
+    })
 }
 
 resource "null_resource" "create_bridgecrew" {
   provisioner "local-exec" {
-    command     = "aws sns ${local.profile_str} --region ${data.aws_region.region.id} publish --target-arn \"${local.bridgecrew_sns_topic}\" --message '${jsonencode(templatefile("${path.module}/message.json.tpl", { request_type = local.request_type, bridgecrew_sns_topic = local.bridgecrew_sns_topic, customer_name = local.customer_name, account_id = local.account_id, external_id = local.external_id, role_arn = local.role_arn, region = local.region, api_token = local.api_token }))}' && sleep 30"
+    command     = "aws sns ${local.profile_str} --region ${data.aws_region.region.id} publish --target-arn \"${local.bridgecrew_sns_topic}\" --message '${jsonencode(local.message_template)}' && sleep 30"
     working_dir = path.module
   }
 
@@ -20,11 +32,11 @@ resource "null_resource" "create_bridgecrew" {
 
 resource "null_resource" "update_bridgecrew" {
   triggers = {
-    build = md5(templatefile("${path.module}/message.json.tpl", { request_type = local.request_type, bridgecrew_sns_topic = local.bridgecrew_sns_topic, customer_name = local.customer_name, account_id = local.account_id, external_id = local.external_id, role_arn = local.role_arn, region = local.region, api_token = local.api_token }))
+    build = md5(local.message_template)
   }
 
   provisioner "local-exec" {
-    command     = "aws sns ${local.profile_str} --region ${data.aws_region.region.id} publish --target-arn \"${local.bridgecrew_sns_topic}\" --message '${jsonencode(replace(templatefile("${path.module}/message.json.tpl", { request_type = local.request_type, bridgecrew_sns_topic = local.bridgecrew_sns_topic, customer_name = local.customer_name, account_id = local.account_id, external_id = local.external_id, role_arn = local.role_arn, region = local.region, api_token = local.api_token }), "Create", "Update"))}'"
+    command     = "aws sns ${local.profile_str} --region ${data.aws_region.region.id} publish --target-arn \"${local.bridgecrew_sns_topic}\" --message '${jsonencode(replace(local.message_template, "Create", "Update"))}'"
     working_dir = path.module
   }
 
@@ -35,7 +47,7 @@ resource "null_resource" "disconnect_bridgecrew" {
   triggers = {
     profile   = local.profile_str
     region    = data.aws_region.region.id
-    message   = jsonencode(replace(templatefile("${path.module}/message.json.tpl", { request_type = local.request_type, bridgecrew_sns_topic = local.bridgecrew_sns_topic, customer_name = local.customer_name, account_id = local.account_id, external_id = local.external_id, role_arn = local.role_arn, region = local.region, api_token = local.api_token }), "Create", "Delete"))
+    message   = jsonencode(replace(local.message_template, "Create", "Delete"))
     sns_topic = local.bridgecrew_sns_topic
   }
 
