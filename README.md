@@ -91,7 +91,6 @@ No requirements.
 | aws | n/a |
 | null | n/a |
 | random | n/a |
-| template | n/a |
 
 ## Modules
 
@@ -109,7 +108,7 @@ No Modules.
 | [aws_region](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/region) |
 | [null_resource](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) |
 | [random_uuid](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/uuid) |
-| [template_file](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) |
+| [templatefile](https://www.terraform.io/docs/language/functions/templatefile.html) |
 
 ## Inputs
 
