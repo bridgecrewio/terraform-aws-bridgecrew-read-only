@@ -121,6 +121,8 @@ No Modules.
 | common\_tags | Implements the common tags scheme | `map(any)` | <pre>{<br>  "integration": "bridgecrew-aws-readonly",<br>  "module": "terraform-aws-bridgecrew-read-only"<br>}</pre> | no |
 | org\_name | The name of the company the integration is for. Must be alphanumeric. | `string` | n/a | yes |
 | topic\_name | The name of the SNS topic for Bridgecrew to receive notifications. This value should not typically be modified, but is provided here to support testing and troubleshooting, if needed. | `string` | `"handle-customer-actions"` | no |
+| role\_name | The name of the read-only IAM role to be created. Default will be calculated depending on org\_name and account\_alias being set. Useful to set this if the calculated name is too large i.e. larger than 64 chars which results in an error. | `string` | `""` | no |
+
 
 ## Outputs
 
