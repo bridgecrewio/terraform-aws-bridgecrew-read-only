@@ -88,51 +88,55 @@ No requirements.
 
 | Name | Version |
 |------|---------|
-| aws | n/a |
-| null | n/a |
-| random | n/a |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.26.0 |
+| <a name="provider_null"></a> [null](#provider\_null) | 3.0.0 |
+| <a name="provider_random"></a> [random](#provider\_random) | 3.0.1 |
 
 ## Modules
 
-No Modules.
+No modules.
 
 ## Resources
 
-| Name |
-|------|
-| [aws_caller_identity](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) |
-| [aws_iam_policy_document](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) |
-| [aws_iam_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) |
-| [aws_iam_role_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy) |
-| [aws_iam_role_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) |
-| [aws_region](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/region) |
-| [null_resource](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) |
-| [random_uuid](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/uuid) |
-| [templatefile](https://www.terraform.io/docs/language/functions/templatefile.html) |
+| Name | Type |
+|------|------|
+| [aws_iam_role.bridgecrew_account_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
+| [aws_iam_role_policy.bridgecrew_describe_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy) | resource |
+| [aws_iam_role_policy_attachment.bridgecrew_cloud_formation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_iam_role_policy_attachment.bridgecrew_security_audit](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
+| [null_resource.await_for_role_setup](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
+| [null_resource.create_bridgecrew](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
+| [null_resource.disconnect_bridgecrew](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
+| [null_resource.update_bridgecrew](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
+| [random_uuid.external_id](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/uuid) | resource |
+| [aws_caller_identity.caller](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
+| [aws_iam_policy_document.bridgecrew_account_assume_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.bridgecrew_describe_policy_document](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_region.region](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/region) | data source |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| account\_alias | The alias of the account the CF is deployed in. This will be prepended to all the resources in the stack. Default is {org\_name}-bc | `string` | `""` | no |
-| api\_token | This is your Bridgecrew platform Api token Set as and Environment variable TF\_VAR\_api\_token | `string` | n/a | yes |
-| aws\_profile | The profile that was used to deploy this module. If the default profile / default credentials are used, seet this value to null. | `string` | n/a | yes |
-| bridgecrew\_account\_id | The Bridgecrew AWS account ID from which scans will originate. This value should not typically be modified, but is provided here to support testing and troubleshooting, if needed. | `string` | `"890234264427"` | no |
-| common\_tags | Implements the common tags scheme | `map(any)` | <pre>{<br>  "integration": "bridgecrew-aws-readonly",<br>  "module": "terraform-aws-bridgecrew-read-only"<br>}</pre> | no |
-| org\_name | The name of the company the integration is for. Must be alphanumeric. | `string` | n/a | yes |
-| topic\_name | The name of the SNS topic for Bridgecrew to receive notifications. This value should not typically be modified, but is provided here to support testing and troubleshooting, if needed. | `string` | `"handle-customer-actions"` | no |
-| role\_name | The name of the read-only IAM role to be created. Default will be calculated depending on org\_name and account\_alias being set. Useful to set this if the calculated name is too large i.e. larger than 64 chars which results in an error. | `string` | `""` | no |
-
+| <a name="input_account_alias"></a> [account\_alias](#input\_account\_alias) | The alias of the account the CF is deployed in. This will be prepended to all the resources in the stack. Default is {org\_name}-bc | `string` | `""` | no |
+| <a name="input_api_token"></a> [api\_token](#input\_api\_token) | This is your Bridgecrew platform Api token Set as and Environment variable TF\_VAR\_api\_token | `string` | n/a | yes |
+| <a name="input_aws_profile"></a> [aws\_profile](#input\_aws\_profile) | The profile that was used to deploy this module. If the default profile / default credentials are used, seet this value to null. | `string` | n/a | yes |
+| <a name="input_bridgecrew_account_id"></a> [bridgecrew\_account\_id](#input\_bridgecrew\_account\_id) | The Bridgecrew AWS account ID from which scans will originate. This value should not typically be modified, but is provided here to support testing and troubleshooting, if needed. | `string` | `"890234264427"` | no |
+| <a name="input_common_tags"></a> [common\_tags](#input\_common\_tags) | Implements the common tags scheme | `map(any)` | <pre>{<br>  "integration": "bridgecrew-aws-readonly",<br>  "module": "terraform-aws-bridgecrew-read-only"<br>}</pre> | no |
+| <a name="input_org_name"></a> [org\_name](#input\_org\_name) | The name of the company the integration is for. Must be alphanumeric. | `string` | n/a | yes |
+| <a name="input_role_name"></a> [role\_name](#input\_role\_name) | The name for the Bridgecrew read-only IAM role. | `string` | `""` | no |
+| <a name="input_topic_name"></a> [topic\_name](#input\_topic\_name) | The name of the SNS topic for Bridgecrew to receive notifications. This value should not typically be modified, but is provided here to support testing and troubleshooting, if needed. | `string` | `"handle-customer-actions"` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| customer\_name | The customer name as defined on Bridgecrew signup |
-| message | n/a |
-| role | The cross-account access role for Bridgecrew |
-| role\_arn | The cross-account access role ARN for Bridgecrew |
-| topic | The SNS endpoint that enabled the account |
+| <a name="output_customer_name"></a> [customer\_name](#output\_customer\_name) | The customer name as defined on Bridgecrew signup |
+| <a name="output_message"></a> [message](#output\_message) | n/a |
+| <a name="output_role"></a> [role](#output\_role) | The cross-account access role for Bridgecrew |
+| <a name="output_role_arn"></a> [role\_arn](#output\_role\_arn) | The cross-account access role ARN for Bridgecrew |
+| <a name="output_role_name"></a> [role\_name](#output\_role\_name) | n/a |
+| <a name="output_topic"></a> [topic](#output\_topic) | The SNS endpoint that enabled the account |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Related Projects
 
