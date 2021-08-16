@@ -14,10 +14,15 @@ output "role" {
 }
 
 output "message" {
-  value = module.readonly.message
+  value     = module.readonly.message
+  sensitive = true
 }
 
 output "topic" {
   description = "The SNS endpoint that enabled the account"
   value       = module.readonly.topic
+}
+
+output "role_name" {
+  value = module.readonly.role_name
 }
