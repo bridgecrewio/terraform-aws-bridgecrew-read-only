@@ -23,7 +23,7 @@ module "readonly" {
   version     = "v1.5.4"
   org_name    = "<your org name>"
   aws_profile = "<aws profile>"
-  api-token   = var.api_token
+  api_token   = var.api_token
 }
 ```
 
