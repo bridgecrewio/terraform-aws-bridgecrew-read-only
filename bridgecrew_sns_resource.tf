@@ -22,6 +22,10 @@ locals {
 }
 
 resource "null_resource" "create_bridgecrew" {
+  triggers = {
+    build = md5(local.message_template)
+  }
+
   provisioner "local-exec" {
     command     = "aws sns ${local.profile_str} --region ${data.aws_region.region.id} publish --target-arn \"${local.bridgecrew_sns_topic}\" --message '${jsonencode(local.message_template)}' && sleep 30"
     working_dir = path.module
